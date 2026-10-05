@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.fastapicloud/
+
+# token usage log (counts only), written by core/llm.py
+data/llm_usage*.jsonl
+
+# run logs
+data/*.log

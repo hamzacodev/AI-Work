@@ -1,0 +1,70 @@
+{
+  "label": "before",
+  "provider": "ollama",
+  "model_main": "llama3.1:8b",
+  "model_fast": "llama3.1:8b",
+  "scenarios": {
+    "A_deal_3_vendors": {
+      "calls": 23,
+      "prompt": 14025,
+      "completion": 661,
+      "total": 14686,
+      "by_agent": {
+        "Safety Guard": {
+          "calls": 11,
+          "prompt_tokens": 5807,
+          "completion_tokens": 204,
+          "total_tokens": 6011,
+          "cost_usd": 0.0
+        },
+        "Negotiator": {
+          "calls": 9,
+          "prompt_tokens": 4984,
+          "completion_tokens": 394,
+          "total_tokens": 5378,
+          "cost_usd": 0.0
+        },
+        "Fact Checker": {
+          "calls": 3,
+          "prompt_tokens": 3234,
+          "completion_tokens": 63,
+          "total_tokens": 3297,
+          "cost_usd": 0.0
+        }
+      },
+      "seconds": 586
+    },
+    "B_assistant": {
+      "calls": 2,
+      "prompt": 533,
+      "completion": 60,
+      "total": 593,
+      "by_agent": {
+        "Assistant": {
+          "calls": 2,
+          "prompt_tokens": 533,
+          "completion_tokens": 60,
+          "total_tokens": 593,
+          "cost_usd": 0.0
+        }
+      },
+      "seconds": 96
+    },
+    "C_research": {
+      "calls": 2,
+      "prompt": 1602,
+      "completion": 201,
+      "total": 1803,
+      "by_agent": {
+        "Researcher": {
+          "calls": 2,
+          "prompt_tokens": 1602,
+          "completion_tokens": 201,
+          "total_tokens": 1803,
+          "cost_usd": 0.0
+        }
+      },
+      "seconds": 379
+    }
+  }
+}

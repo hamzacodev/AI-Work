@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Design tokens, light and dark. Soft cool greys, blue accent, dark pill buttons (a calm, "dashboard" look).
+   The page sets data-theme="light" or "dark" on <html> (see ThemeToggle and the script in layout.tsx).
+   Neutral text always uses --color-text-primary or --color-text-secondary. */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #eceff5;
+  --border: #dfe4ec;
+  --text-primary: #101828;
+  --text-secondary: #566074;
+
+  --accent: #2755e6; /* links, brand, active borders */
+  --accent-50: #ffffff; /* text on a strong accent background */
+  --accent-100: #1c3fae; /* text on a soft accent background */
+  --accent-800: #2f5bea; /* strong accent background */
+  --accent-900: #e4ebff; /* soft accent background */
+  --primary: #111827; /* main button: a dark pill */
+  --primary-hover: #273146;
+  --on-primary: #ffffff;
+  --owner: #e5e9f2; /* the owner's own chat bubble */
+  --owner-text: #101828;
+
+  --danger-100: #fde6e4;
+  --danger-900: #912018;
+  --danger-text: #b42318;
+  --warn-100: #fdf0c8;
+  --warn-900: #7a4a07;
+  --warn-text: #9a5b00;
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --dots: rgba(16, 24, 40, 0.07);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b101a;
+  --surface: #121926;
+  --surface-2: #1a2334;
+  --border: #263247;
+  --text-primary: #e9eef7;
+  --text-secondary: #95a2b8;
+
+  --accent: #7ea6ff;
+  --accent-50: #f3f7ff;
+  --accent-100: #d5e3ff;
+  --accent-800: #2c4fb8;
+  --accent-900: #172648;
+  --primary: #e9eef7;
+  --primary-hover: #ffffff;
+  --on-primary: #0b101a;
+  --owner: #dbe5f6;
+  --owner-text: #0e1626;
+
+  --danger-100: #fde6e4;
+  --danger-900: #912018;
+  --danger-text: #fda29b;
+  --warn-100: #fdf0c8;
+  --warn-900: #7a4a07;
+  --warn-text: #fedf89;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --dots: rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-accent: var(--accent);
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-owner: var(--owner);
+  --color-owner-text: var(--owner-text);
+
+  --color-danger-100: var(--danger-100);
+  --color-danger-900: var(--danger-900);
+  --color-danger-text: var(--danger-text);
+  --color-warn-100: var(--warn-100);
+  --color-warn-900: var(--warn-900);
+  --color-warn-text: var(--warn-text);
+
+  --shadow-card: var(--shadow-card);
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* A hand cursor on everything you can click, and a "not allowed" cursor on disabled buttons. */
+button:not(:disabled),
+[role="button"],
+a[href],
+summary,
+select,
+input[type="checkbox"],
+input[type="radio"],
+label[for] {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}

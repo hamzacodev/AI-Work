@@ -1,0 +1,343 @@
+{
+ "_note": "Edit this file after every step, then run: python3 scripts/progress.py. 'weight' is the size of the task. 'done' is 0 to 1 (0.5 = half done). Weights add up to 100.",
+ "phases": [
+  {
+   "id": "0",
+   "name": "Setup"
+  },
+  {
+   "id": "1a",
+   "name": "Frontend with mock data"
+  },
+  {
+   "id": "1b",
+   "name": "Pipeline and first deploy"
+  },
+  {
+   "id": "2",
+   "name": "Backend core"
+  },
+  {
+   "id": "3",
+   "name": "Agents and research"
+  },
+  {
+   "id": "4",
+   "name": "Connect the real frontend"
+  },
+  {
+   "id": "5",
+   "name": "Evaluation and scorecard"
+  },
+  {
+   "id": "6",
+   "name": "Hardening and README"
+  },
+  {
+   "id": "7",
+   "name": "Hosted model and final deploy"
+  }
+ ],
+ "tasks": [
+  {
+   "phase": "0",
+   "module": "Setup and accounts",
+   "title": "Tools, repo, env files, accounts",
+   "weight": 5.26,
+   "done": 1
+  },
+  {
+   "phase": "1a",
+   "module": "Frontend",
+   "title": "Design, nav, login, Home, Planned pages",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "1a",
+   "module": "Frontend",
+   "title": "Buy page with CSV and Excel upload",
+   "weight": 3.158,
+   "done": 1
+  },
+  {
+   "phase": "1a",
+   "module": "Frontend",
+   "title": "Deals screen, chat, decision card, trick box",
+   "weight": 5.263,
+   "done": 1
+  },
+  {
+   "phase": "1a",
+   "module": "Frontend",
+   "title": "WhatsApp demonstration, Scorecard, API client",
+   "weight": 3.158,
+   "done": 1
+  },
+  {
+   "phase": "1b",
+   "module": "Backend API and data",
+   "title": "FastAPI app, settings, CORS, health",
+   "weight": 1.579,
+   "done": 1
+  },
+  {
+   "phase": "1b",
+   "module": "Backend API and data",
+   "title": "Supabase schema and connection",
+   "weight": 1.579,
+   "done": 1
+  },
+  {
+   "phase": "1b",
+   "module": "Models and LLM layer",
+   "title": "LLM layer on Ollama",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "1b",
+   "module": "Deployment and operations",
+   "title": "First deploy of frontend and backend",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Backend API and data",
+   "title": "Deal schemas and create/get endpoints",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Safety guards",
+   "title": "Limit Checker (plain code)",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Safety guards",
+   "title": "Safety Guard (rules plus model)",
+   "weight": 3.684,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Safety guards",
+   "title": "Fact Checker (rules, filter, model, rewrite loop)",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Testing and evaluation",
+   "title": "Simulator with 5 fake vendors and 30 attacks",
+   "weight": 2.632,
+   "done": 1
+  },
+  {
+   "phase": "2",
+   "module": "Deployment and operations",
+   "title": "Budget, rate limit, leases and resume",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Research",
+   "title": "Researcher (search, verified extraction, FX, pricing, cache)",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Counter formula and decision (plain code)",
+   "weight": 3.158,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Tactics playbook (round by round) in the Fact Checker",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Negotiator (AI writes the reply)",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Understand-the-offer step",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Best Offer Tracker, leverage line, firm price and pause rule",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "LangGraph agent loop",
+   "weight": 4.211,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Variants (color, size) and free extras, effective price",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Negotiation and agent",
+   "title": "Chats never close, Assistant chat starts new purchases",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Testing and evaluation",
+   "title": "Token tracking, AGENT_EXECUTION_FLOW.md, first token optimizations",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Negotiation and agent",
+   "title": "Closer (after you accept)",
+   "weight": 1.579,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Backend API and data",
+   "title": "Decision endpoint",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "3",
+   "module": "Backend API and data",
+   "title": "/parse-request and /trick endpoints",
+   "weight": 0.526,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Frontend",
+   "title": "Take-control screen (on demo data)",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Backend API and data",
+   "title": "Take-control and tester-message endpoints",
+   "weight": 1.053,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Frontend",
+   "title": "Replace mock data with the real API",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Negotiation and agent",
+   "title": "Full Buy flow works end to end on Ollama",
+   "weight": 1.579,
+   "done": 1
+  },
+  {
+   "phase": "4",
+   "module": "Frontend",
+   "title": "Buyer request box on the WhatsApp page",
+   "weight": 0.526,
+   "done": 1
+  },
+  {
+   "phase": "5",
+   "module": "Testing and evaluation",
+   "title": "Scenarios and judge",
+   "weight": 3.158,
+   "done": 1,
+   "note": "LLM judge, chatty vendor, 8 products, 10 rounds (built 4 Oct)"
+  },
+  {
+   "phase": "5",
+   "module": "Testing and evaluation",
+   "title": "Evaluation runner",
+   "weight": 2.632,
+   "done": 1
+  },
+  {
+   "phase": "5",
+   "module": "Testing and evaluation",
+   "title": "Full run stored, real Scorecard, attack tests",
+   "weight": 2.632,
+   "done": 1
+  },
+  {
+   "phase": "6",
+   "module": "Frontend",
+   "title": "Error, empty and loading states, waking-up message",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "6",
+   "module": "Deployment and operations",
+   "title": "README with architecture diagram",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "6",
+   "module": "Safety guards",
+   "title": "Security check: secrets, CORS, limits",
+   "weight": 1.053,
+   "done": 1,
+   "flag": "you",
+   "note": "You must rotate the keys pasted in chat first"
+  },
+  {
+   "phase": "7",
+   "module": "Models and LLM layer",
+   "title": "Switch to a hosted model, smoke test",
+   "weight": 2.105,
+   "done": 1
+  },
+  {
+   "phase": "7",
+   "module": "Deployment and operations",
+   "title": "Redeploy, test in a fresh browser and on a phone",
+   "weight": 2.105,
+   "done": 0.7,
+   "flag": "you",
+   "note": "You test on your phone and in a fresh browser"
+  }
+ ],
+ "attention": [
+  {
+   "kind": "you",
+   "phase": "3",
+   "title": "Check that Tavily pay-as-you-go is switched off",
+   "note": "Keeps the research tier free"
+  }
+ ]
+}

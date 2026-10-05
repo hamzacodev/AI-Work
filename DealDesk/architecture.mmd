@@ -1,0 +1,77 @@
+---
+config:
+  flowchart:
+    htmlLabels: false
+    padding: 28
+    nodeSpacing: 45
+    rankSpacing: 70
+    curve: basis
+---
+flowchart LR
+    classDef user fill:#fff8e1,stroke:#f9a825,stroke-width:2px,color:#5d4037
+    classDef code fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+    classDef ai fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#0d47a1
+    classDef store fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100
+    classDef ext fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#4a148c
+    classDef test fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#880e4f
+
+    BUYER(["BUYER<br/>says what to buy and the max price<br/>only the buyer can accept a deal"]):::user
+
+    subgraph FE["1. WEBSITE  -  Next.js + Tailwind on Vercel  (light and dark theme)"]
+        PAGES["Pages: Buy, Deals,<br/>WhatsApp demo, Scorecard<br/>Best Deal box shows<br/>the lowest price"]:::user
+    end
+
+    subgraph BE["2. BACKEND  -  FastAPI on FastAPI Cloud"]
+        API["API routes<br/>deals, decision, assistant,<br/>price check, trick test"]:::code
+        RT["Runtime<br/>starts deals, fake vendors,<br/>restart recovery"]:::code
+        AS["Assistant chat<br/>starts a purchase<br/>after a clear yes"]:::ai
+        CL["Closer<br/>accept, counter, reject<br/>plain code"]:::code
+
+        subgraph TURN["MANAGER  -  LangGraph  -  one turn per vendor message  -  all vendors run in parallel"]
+            direction TB
+            N1["1. Safety Guard<br/>48 rules + model<br/>blocks tricks"]:::ai
+            N2["2. Researcher<br/>real market price<br/>with source links"]:::ai
+            N3["3. Offer Reader<br/>reads the price<br/>and 'final price'"]:::ai
+            N4["4. Strategy<br/>PLAIN CODE<br/>decides what to do"]:::code
+            N5["5. Negotiator<br/>model writes words<br/>code gives the price"]:::ai
+            N6["6. Fact Checker<br/>27 rules + 2nd model<br/>stops invented claims"]:::ai
+            N7["7. Limit Checker<br/>PLAIN CODE, no AI<br/>last gate"]:::code
+            TRACK["Best Offer Tracker<br/>plain code: lowest price,<br/>shared as a number,<br/>wakes paused vendors"]:::code
+            N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+            N4 --- TRACK
+        end
+
+        BUD["Budgets and safety<br/>daily budget, rate limit,<br/>per-deal cap"]:::code
+    end
+
+    subgraph SVC["3. MODELS AND SERVICES  -  all free tiers"]
+        LLM["Language models<br/>live: Groq gpt-oss<br/>(120b writes, 20b checks)<br/>testing: Ollama Llama 3.1"]:::ext
+        TAV["Tavily web search<br/>market price research"]:::ext
+        FX["Exchange rates<br/>free API + built-in table"]:::ext
+        DB[("Supabase database<br/>deals, chats, timeline,<br/>research cache")]:::store
+    end
+
+    VEND["VENDORS<br/>played by you or by fake testers<br/>(friendly, pushy, stubborn,<br/>liar, attacker, chatty)"]:::user
+
+    subgraph EVAL["4. TESTING  -  offline, never reachable from the public API"]
+        RUN["Evaluation runner<br/>fake deals, safety ON vs OFF<br/>plus 33 attack messages"]:::test
+        RUB["Weighted rubric + LLM judge<br/>accuracy 30, quality 20, tools 15,<br/>routing 15, instructions 10,<br/>efficiency 10, pass mark 0.80"]:::test
+        SC["Scorecard page<br/>only real stored runs"]:::test
+        RUN --> RUB --> SC
+    end
+
+    BUYER -->|"types a request, decides at the end"| PAGES
+    PAGES -->|"HTTPS, polls every 3 seconds"| API
+    API --> RT
+    API --> AS
+    API --> CL
+    RT --> TURN
+    TURN -->|"approved message"| VEND
+    VEND -->|"reply"| TURN
+    TURN -.->|"model calls"| LLM
+    TURN -.->|"price search"| TAV
+    TURN -.->|"convert currency"| FX
+    BUD -.->|"limits every model call"| LLM
+    BE -.->|"saves state after every step"| DB
+    RUN -.->|"runs the same pipeline"| TURN
+    SC -.->|"reads stored runs"| DB
