@@ -1,0 +1,26 @@
+[project]
+name = "secscout"
+version = "0.1.0"
+description = "Agentic AI project that finds security gaps in apps, ranks them, proposes fixes and verifies them."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph",
+    "langchain-core",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "python-dotenv",
+    "httpx",
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools]
+packages = ["agents", "graph", "tools", "sandbox", "api", "evals"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

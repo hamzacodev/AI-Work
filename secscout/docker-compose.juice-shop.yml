@@ -1,0 +1,7 @@
+# Optional: run OWASP Juice Shop from its official image (practice app, vulnerable on purpose).
+# Bound to localhost only.
+services:
+  juice-shop:
+    image: bkimminich/juice-shop
+    ports:
+      - "127.0.0.1:3000:3000"

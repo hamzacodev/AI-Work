@@ -1,0 +1,22 @@
+# env files
+.env
+.env.*
+!.env.example
+
+# dependencies / envs
+node_modules/
+.venv/
+
+# cloned practice apps
+targets/
+
+# scan results
+results/
+*.sqlite
+*.db
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
